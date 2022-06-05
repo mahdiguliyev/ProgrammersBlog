@@ -1,0 +1,95 @@
+﻿@model ProgrammersBlog.Entities.Dtos.ArticleListDto
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Articles";
+}
+<ol class="breadcrumb mb-3 mt-2">
+    <li class="breadcrumb-item"><a asp-area="admin" asp-controller="home" asp-action="index">Admin</a></li>
+    <li class="breadcrumb-item active"><a asp-area="admin" asp-controller="article" asp-action="index">Articles</a></li>
+</ol>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table mr-1"></i>
+        Articles
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="articlesTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Category</th>
+                        <th>Title</th>
+                        <th>Thumbnail</th>
+                        <th>Shared Date</th>
+                        <th>Read Count</th>
+                        <th>Comment Count</th>
+                        <th>Is Active?</th>
+                        <th>Is Deleted?</th>
+                        <th>Created Date</th>
+                        <th>Created By User </th>
+                        <th>Recent Modified Date</th>
+                        <th>Recent Modified By User </th>
+                        <th>Operations</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>#</th>
+                        <th>Category</th>
+                        <th>Title</th>
+                        <th>Thumbnail</th>
+                        <th>Shared Date</th>
+                        <th>Read Count</th>
+                        <th>Comment Count</th>
+                        <th>Is Active?</th>
+                        <th>Is Deleted?</th>
+                        <th>Created Date</th>
+                        <th>Created By User </th>
+                        <th>Recent Modified Date</th>
+                        <th>Recent Modified By User </th>
+                        <th>Operations</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var article in Model.Articles)
+                    {
+                        <tr name="@article.Id">
+                            <td>@article.Id</td>
+                            <td>@article.Category.Name</td>
+                            <td>@article.Title</td>
+                            <td><img src="~/img/@article.Thumbnail" class="my-image-table" /></td>
+                            <td>@article.Date.ToShortDateString()</td>
+                            <td>@article.ViewsCount</td>
+                            <td>@article.CommentsCount</td>
+                            <td>@(article.IsActive ? "Yes" : "No")</td>
+                            <td>@(article.IsDeleted ? "Yes" : "No")</td>
+                            <td>@article.CreatedDate.ToShortDateString()</td>
+                            <td>@article.CreatedByName</td>
+                            <td>@article.ModifiedDate.ToShortDateString()</td>
+                            <td>@article.ModifiedByName</td>
+                            <td>
+                                <a asp-area="admin" asp-controller="article" asp-action="update" asp-route-articleId="@article.Id" class="btn btn-primary btn-sm btn-update" data-id="@article.Id"><span class="fas fa-edit"></span></a>
+                                <button class="btn btn-danger btn-sm btn-delete" data-id="@article.Id"><span class="fas fa-minus-circle"></span></button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/Admin/js/articleIndex.js" type="application/ecmascript"></script>
+    <script>
+        $(document).ready(function () {
+            $('#btnAdd').click(function(){
+                window.location.href = '@Url.Action("add","article")';
+            });
+        });
+    </script>
+}
+@section Styles{
+
+}

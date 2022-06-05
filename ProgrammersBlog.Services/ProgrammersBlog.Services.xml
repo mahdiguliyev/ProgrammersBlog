@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ProgrammersBlog.Services</name>
+    </assembly>
+    <members>
+        <member name="M:ProgrammersBlog.Services.Abstract.ICategoryService.GetCategoryUpdateDtoAsync(System.Int32)">
+            <summary>
+            Get CategoryUpdateDto from category Model by using ID
+            </summary>
+            <param name="categoryId">More than 0 integer ID value</param>
+            <returns>Returns Task in DataResult type as a Asyncronous operation.</returns>
+        </member>
+        <member name="M:ProgrammersBlog.Services.Abstract.ICategoryService.AddAsync(ProgrammersBlog.Entities.Dtos.CategoryAddDto,System.String)">
+            <summary>
+            Add new category by using parametrs CategoryAddDto and CreatedByName.
+            </summary>
+            <param name="categoryAddDto">Category informations in categoryAddDto type.</param>
+            <param name="createdByName">User's username in string type.</param>
+            <returns>Returns the result of Adding Category in Task and DataResult type as a Asyncronous operation.</returns>
+        </member>
+        <member name="M:ProgrammersBlog.Services.Concrete.CategoryManager.AddAsync(ProgrammersBlog.Entities.Dtos.CategoryAddDto,System.String)">
+            <summary>
+            Add new category by using parametrs CategoryAddDto and CreatedByName.
+            </summary>
+            <param name="categoryAddDto">Category informations in categoryAddDto type.</param>
+            <param name="createdByName">User's username in string type.</param>
+            <returns>Returns the result of Adding Category in Task and DataResult type as a Asyncronous operation.</returns>
+        </member>
+        <member name="M:ProgrammersBlog.Services.Concrete.CategoryManager.GetCategoryUpdateDtoAsync(System.Int32)">
+            <summary>
+            Get CategoryUpdateDto from category Model by using ID
+            </summary>
+            <param name="categoryId">More than 0 integer ID value</param>
+            <returns>Returns Task in DataResult type as a Asyncronous operation.</returns>
+        </member>
+    </members>
+</doc>

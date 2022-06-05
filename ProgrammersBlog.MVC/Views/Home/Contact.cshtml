@@ -1,0 +1,44 @@
+﻿@model ProgrammersBlog.Entities.Dtos.EmailSendDto
+@{
+    Layout = "_ContactLayout";
+    ViewBag.Title = "Əlaqə";
+
+    ViewBag.Author = "ProgrammersBlog";
+    ViewBag.Description = "Hər hansı sualınızda bizimlə əlaqə saxlayın.";
+    ViewBag.Tags = "Contact, Contact Us, Bizimlə Əlaqə, Əlaqə Saxla";
+}
+
+<div class="container contact-form">
+    <div class="contact-image">
+        <img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact" />
+    </div>
+    <form asp-controller="home" asp-action="contact" method="post">
+        <div asp-validation-summary="All" class="text-danger" id="validation-summary" aria-hidden="true" style="display:none;"></div>
+        <h3>Bizə mesajınızı göndərin</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Adınız *" asp-for="Name" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="E-mail adresiniz *" asp-for="Email" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Mövzu / Başlıq *" asp-for="Subject" />
+                    <span asp-validation-for="Subject" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <button type="submit" name="btnSubmit" class="btnContact">Göndər</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <textarea class="form-control" placeholder="Mesajınız... *" asp-for="Message" style="width: 100%; height: 150px;"></textarea>
+                    <span asp-validation-for="Message" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
